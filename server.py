@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 app = Flask(__name__)
 file_path = "./sensor_data.csv"
-port_num = "al18011" # 学籍番号を各自入力
+port_num = 18011 # 学籍番号を各自入力
 
 @app.route('/', methods=['GET'])
 def get_html():
