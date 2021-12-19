@@ -10,10 +10,11 @@ def get_html():
 @app.route('/lux', methods=['POST'])
 def update_lux():
     time = request.form["time"]
-    lux = request.form["lux"]
+    temp = request.form["temp"]
+    mois = request.form["mois"]
     try:
         f = open(file_path, 'w')
-        f.write(time + "," + lux)
+        f.write(time + "," + temp + "," + mois)
         return "succeeded to write"
     except Exception as e:
         print(e)
