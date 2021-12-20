@@ -21,7 +21,7 @@ def update_csv(ti, te, mo):
 
 print("test_csv")
 for num in range(10):
-    tim = "0"
+    tim = datetime.datetime.now().strftime('%Y/%m/%d %H:%M')
     temp ="1"
     mois ="2"
     update_csv(tim, temp, mois)

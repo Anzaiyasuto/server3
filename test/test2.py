@@ -83,7 +83,7 @@ def tail_b(fn, n=None):
 
                     # 改行コード'\r\n' または\n'で区切って配列に変換する
                     lines = re.split(r'\r?\n', line)
-
+                    #print(lines)
                     # 最後に後ろからn個取り出し, float型に変換して返す
                     result = [list(map(str, line.split(','))) for line in lines[-n:]]
 
@@ -92,10 +92,8 @@ def tail_b(fn, n=None):
                         return result[-1]
                     else:
                         return result
-file_path = "./sample.csv"
+file_path = "./test_data.csv"
 print("test")
-print(tail_b(file_path, None)[0])
-print(tail_b(file_path, None)[1])
-print(tail_b(file_path, None)[2])
+print(tail_b(file_path, None))
 
 print("end")
