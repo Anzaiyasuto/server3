@@ -92,7 +92,7 @@ def tail_b(fn, n=None):
                         return result[-1]
                     else:
                         return result
-file_path = "./test_data.csv"
+file_path = "./sample.csv"
 print("test")
 print(tail_b(file_path, None)[0])
 print(tail_b(file_path, None)[1])

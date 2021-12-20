@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template
 from csv import writer
+import re
+
 app = Flask(__name__)
 file_path = "./sensor_data.csv"
 port_num = 18011 # 学籍番号を各自入力
