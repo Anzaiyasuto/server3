@@ -1,8 +1,5 @@
-from flask import Flask, request, render_template
-from csv import writer
-app = Flask(__name__)
-file_path = "./sensor_data.csv"
-port_num = 18011 # 学籍番号を各自入力
+# 正規表現が使えるsplitを使う
+import re
 
 def tail_b(fn, n=None):
     # nを与えないときは最後の行だけ単体で返す
@@ -95,39 +92,10 @@ def tail_b(fn, n=None):
                         return result[-1]
                     else:
                         return result
+file_path = "./test_data.csv"
+print("test")
+print(tail_b(file_path, None)[0])
+print(tail_b(file_path, None)[1])
+print(tail_b(file_path, None)[2])
 
-
-
-@app.route('/', methods=['GET'])
-def get_html():
-    return render_template('./index.html')
-
-@app.route('/lux', methods=['POST'])
-def update_lux():
-    time = request.form["time"]
-    temp = request.form["temp"]
-    mois = request.form["mois"]
-    list_data = [time, temp, mois] #時間、温度、湿度
-    try:
-        f = open(file_path, 'a', newline='')
-        writer_object = writer(f)
-        writer_object.writerow(list_data)
-        return "succeeded to write"
-    except Exception as e:
-        print(e)
-        return "failed to write"
-    finally:
-        f.close()
-
-@app.route('/lux', methods=['GET'])
-def get_lux():
-    try:
-        lux = tail_b(file_path, None)
-    except Exception as e:
-        print(e)
-    finally:
-        return lux
-
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=port_num)
+print("end")
