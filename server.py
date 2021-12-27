@@ -93,7 +93,6 @@ def tail_b(fn, n=None):
                     result = [list(map(str, line.split(','))) for line in lines[-n:]]
 
                     # nを指定しなかったときは最後の一行を単体で返す
-                    f.close()
                     if not is_list:
                         return result[-1]
                     else:
