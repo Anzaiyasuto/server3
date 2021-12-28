@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>TEST</title>
-    <script type="text/javascript" src="main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href="{{url_for('static', filename='style.css')}}" type='text/css'/>
+    <link rel='stylesheet' href="{{url_for('static', filename='css/style.css')}}" type='text/css'/>
   </head>
   <body>
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/main.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <div class="header">
       <h1 class="logo">Raspi LO</h1>
       <div class="nav" id="currentTime"></div>
