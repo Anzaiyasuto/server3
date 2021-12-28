@@ -86,7 +86,7 @@ def tail_b(fn, n=None):
                     #print(lines)
                     # 最後に後ろからn個取り出し, float型に変換して返す
                     result = [list(map(str, line.split(','))) for line in lines[-n:]]
-
+                    print(result)
                     # nを指定しなかったときは最後の一行を単体で返す
                     if not is_list:
                         return result[-1]
@@ -94,6 +94,7 @@ def tail_b(fn, n=None):
                         return result
 file_path = "./test_data.csv"
 print("test")
-print(tail_b(file_path, None))
-
+a = tail_b(file_path, None)
+b = ','.join(a)
+print(b)
 print("end")

@@ -89,7 +89,7 @@ def tail_b(fn, n=None):
                     # 改行コード'\r\n' または\n'で区切って配列に変換する
                     lines = re.split(r'\r?\n', line)
 
-                    # 最後に後ろからn個取り出し, float型に変換して返す
+                    # 最後に後ろからn個取り出し, str型に変換して返す
                     result = [list(map(str, line.split(','))) for line in lines[-n:]]
 
                     # nを指定しなかったときは最後の一行を単体で返す
@@ -124,8 +124,8 @@ def update_lux():
 @app.route('/lux', methods=['GET'])
 def get_lux():
     try:
-        lux = "3"
-        # lux = tail_b(file_path, None)
+        temp = tail_b(file_path, None)
+        lux = ','.join(temp)
     except Exception as e:
         print(e)
     finally:

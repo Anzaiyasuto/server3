@@ -1,5 +1,5 @@
-line = "1,2,3,4"
-result = []
+list = ['A', 'B', 'C', 1, 2, 3]
 
-result.append(map(str, line.split(',')))
-print(result)
+map = map(str, list)
+print(''.join(map))
+# ABC123
