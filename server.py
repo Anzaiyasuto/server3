@@ -124,7 +124,8 @@ def update_lux():
 @app.route('/lux', methods=['GET'])
 def get_lux():
     try:
-        lux = tail_b(file_path, None)
+        lux = 3
+        # lux = tail_b(file_path, None)
     except Exception as e:
         print(e)
     finally:
