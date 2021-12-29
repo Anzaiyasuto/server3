@@ -6,7 +6,7 @@ data = []
 
 @app.route("/index")
 def index():
-    csv_content = read_csv("AirPassengers")
+    csv_content = read_csv("AirPassenger")
     for row in csv_content:
         data.append(row[0])
         print(data)
