@@ -8,7 +8,7 @@ data = []
 def index():
     csv_content = read_csv("AirPassenger")
     for row in csv_content:
-        data.append(row[0])
+        data.append(row[1])
         print(data)
     return render_template("index.html",input_from_python= data) # templatesフォルダ内のindex.htmlを表示する
 
