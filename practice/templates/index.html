@@ -1,123 +1,15 @@
-<html>
-
-<head>
-    <title>highchart1</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <script src="https://code.highcharts.com/highcharts.src.js"></script>
-</head>
+<!DOCTYPE html>
+<html lang="ja">
 
 <body>
+    <button onclick=test_click()>ボタン</button>
     <script>
-        const blob = new Blob(['aiueo'],{type:"text/plain"});
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'test.txt'
-        link.click();
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <div id="chart1"></div>
-    <script type="text/javascript">
-        function draw1() {
-            options = {
-                chart: { renderTo: 'chart1' },
-                series: [{ data: [1, 1, 2, 3, 5, 8, 13, 21, 34] }]
+        function test_click() {
+            let list_data = {{ input_from_python | tojson
+        }};
+        alert(list_data);
             };
-            chart = new Highcharts.Chart(options);
-        };
-        document.body.onload = draw1();
     </script>
-    <div id="chart4" style="width:400px; height:300px"></div>
-
-    <script type="text/javascript">
-        function draw4() {
-            options = {
-                chart: {
-                    renderTo: 'chart4',
-                    zoomType: 'xy'
-                },
-                title: { text: '我が体重' },
-                xAxis: {
-                    title: null,
-                    type: 'datetime'
-                },
-                yAxis: { title: { text: 'weight (kg)' } },
-            };
-            var content = [];
-            var result = [];
-            var count1 = [];
-            var count2 = [];
-            jQuery.get('./alpha/highchart4.csv', function (content) {
-                content = content.split('\n');
-                for (i = 0; i < content.length - 1; i++) {
-                    count1[i] = [];
-                    count2[i] = [];
-                    result[i] = content[i].split(',');
-                    result[i] = [Date.parse(result[i][0]), Number(result[i][1]), Number(result[i][2])];
-                    count1[i][0] = result[i][0];
-                    count1[i][1] = result[i][1];
-                    count2[i][0] = result[i][0];
-                    count2[i][1] = result[i][2];
-                }
-                options['series'] = [{ name: '俺', data: count1 }, { name: '目標', data: count2 }];
-                chart = new Highcharts.Chart(options);
-            });
-        };
-        document.body.onload = draw4();
-    </script>
-    <div id="chart3" style="width:400px; height:300px"></div>
-
-    <script type="text/javascript">
-        function draw3() {
-            options = {
-                chart: {
-                    renderTo: 'chart3',
-                    zoomType: 'xy'
-                },
-                title: { text: '我が体重' },
-                xAxis: {
-                    title: null,
-                    type: 'datetime'
-                },
-                yAxis: { title: { text: 'weight (kg)' } },
-                series: [{
-                    name: 'weight',
-                    data: [[Date.parse('2016-07-29'), 59.8],
-                    [Date.parse('2016-07-30'), 60.2],
-                    [Date.parse('2016-07-31'), 59.9],
-                    [Date.parse('2016-08-02'), 60.8],
-                    [Date.parse('2016-08-05'), 61.7],]
-                }]
-            };
-            chart = new Highcharts.Chart(options);
-        };
-        document.body.onload = draw3();
-    </script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
-
-    <div id="chart2" style="width:400px; height:300px"></div>
-
-    <script type="text/javascript">
-        function draw2() {
-            options = {
-                chart: {
-                    renderTo: 'chart2',
-                    zoomType: 'xy'
-                },
-                title: { text: 'Fibonacci vs. Tribonacci' },
-                xAxis: { title: { text: 'step' } },
-                yAxis: { title: { text: 'value' } },
-                series: [{ name: 'Fibonacci', data: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377] },
-                { name: 'Tribonacci', data: [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504] }]
-            };
-            chart = new Highcharts.Chart(options);
-        };
-        document.body.onload = draw2();
-    </script>
-    
-    
 </body>
 
 </html>
