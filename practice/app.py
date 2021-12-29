@@ -4,7 +4,7 @@ import csv
 app = Flask(__name__)
 data = []
 port_num = 18011
-@app.route("/index")
+@app.route('/', methods=['GET'])
 def index():
     csv_content = read_csv("AirPassengers")
     for row in csv_content:
