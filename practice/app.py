@@ -3,7 +3,7 @@ import csv
 
 app = Flask(__name__)
 data = []
-
+port_num = 18011
 @app.route("/index")
 def index():
     csv_content = read_csv("AirPassengers")
@@ -19,4 +19,4 @@ def read_csv(filename):
     return f
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=port_num)
