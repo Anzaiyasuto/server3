@@ -4,7 +4,7 @@ import csv
 app = Flask(__name__)
 data = []
 
-@app.route("/index")
+@app.route("/")
 def index():
     csv_content = read_csv("AirPassenger")
     for row in csv_content:
