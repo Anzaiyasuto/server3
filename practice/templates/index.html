@@ -8,7 +8,44 @@
 </head>
 
 <body>
+    <div id="chart4" style="width:400px; height:300px"></div>
 
+    <script type="text/javascript">
+        function draw4() {
+            options = {
+                chart: {
+                    renderTo: 'chart4',
+                    zoomType: 'xy'
+                },
+                title: { text: '我が体重' },
+                xAxis: {
+                    title: null,
+                    type: 'datetime'
+                },
+                yAxis: { title: { text: 'weight (kg)' } },
+            };
+            var content = [];
+            var result = [];
+            var count1 = [];
+            var count2 = [];
+            jQuery.get('./highchart4.csv', function (content) {
+                content = content.split('\n');
+                for (i = 0; i < content.length - 1; i++) {
+                    count1[i] = [];
+                    count2[i] = [];
+                    result[i] = content[i].split(',');
+                    result[i] = [Date.parse(result[i][0]), Number(result[i][1]), Number(result[i][2])];
+                    count1[i][0] = result[i][0];
+                    count1[i][1] = result[i][1];
+                    count2[i][0] = result[i][0];
+                    count2[i][1] = result[i][2];
+                }
+                options['series'] = [{ name: '俺', data: count1 }, { name: '目標', data: count2 }];
+                chart = new Highcharts.Chart(options);
+            });
+        };
+        document.body.onload = draw4();
+    </script>
     <div id="chart3" style="width:400px; height:300px"></div>
 
     <script type="text/javascript">
@@ -72,44 +109,7 @@
         };
         document.body.onload = draw1();
     </script>
-    <div id="chart4" style="width:400px; height:300px"></div>
-
-    <script type="text/javascript">
-        function draw4() {
-            options = {
-                chart: {
-                    renderTo: 'chart4',
-                    zoomType: 'xy'
-                },
-                title: { text: '我が体重' },
-                xAxis: {
-                    title: null,
-                    type: 'datetime'
-                },
-                yAxis: { title: { text: 'weight (kg)' } },
-            };
-            var content = [];
-            var result = [];
-            var count1 = [];
-            var count2 = [];
-            jQuery.get('./highchart4.csv', function (content) {
-                content = content.split('\n');
-                for (i = 0; i < content.length - 1; i++) {
-                    count1[i] = [];
-                    count2[i] = [];
-                    result[i] = content[i].split(',');
-                    result[i] = [Date.parse(result[i][0]), Number(result[i][1]), Number(result[i][2])];
-                    count1[i][0] = result[i][0];
-                    count1[i][1] = result[i][1];
-                    count2[i][0] = result[i][0];
-                    count2[i][1] = result[i][2];
-                }
-                options['series'] = [{ name: '俺', data: count1 }, { name: '目標', data: count2 }];
-                chart = new Highcharts.Chart(options);
-            });
-        };
-        document.body.onload = draw4();
-    </script>
+    
 </body>
 
 </html>
